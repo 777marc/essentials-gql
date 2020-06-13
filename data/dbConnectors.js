@@ -30,6 +30,6 @@ const friendSchema =  new mongoose.Schema({
     }
 });
 
-const Friends = mongoose.model('friends', friendSchema);
+const Friend = mongoose.model('friends', friendSchema);
 
-export { Friends };
+export { Friend };

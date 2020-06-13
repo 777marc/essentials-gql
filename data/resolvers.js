@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Friends } from '../data/dbConnectors';
+import { Friend } from '../data/dbConnectors';
 
 export const resolvers = {
 
