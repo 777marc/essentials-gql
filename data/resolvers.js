@@ -4,8 +4,13 @@ import { Friend } from '../data/dbConnectors';
 export const resolvers = {
 
     Query: {
-        getFriend: ({ id }) => {
-            return new Friend(id, friendDatabase[id]);
+        getFriend: (root, { id }) => {
+            return new Promise((resolve, object) => {
+                Friend.findById(id, (err, friend) => {
+                    if (err) reject(err)
+                    else resolve(friend)
+                })
+            });
         },
     },
     Mutation: {
@@ -30,7 +35,15 @@ export const resolvers = {
                 })
             })
 
-        }
+        },
+        updateFriend:(root, { input }) => {
+            return new Promise((resolve, object) => {
+                Friend.findOneAndUpdate({_id: input.id}, input, { new: true }, (err, friend) => {
+                    if (err) reject(err)
+                    else resolve(friend)
+                });
+            });
+        },
     }
 
 };
